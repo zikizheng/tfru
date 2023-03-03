@@ -1,8 +1,9 @@
 import cv2
 import os
 
-def face():
+def faceDetect():
 
+    retval = os.getcwd()
     file_name = os.path.join(os.path.dirname(__file__), '.\\face\\1.jpeg')
     assert os.path.exists(file_name)
 
@@ -23,7 +24,7 @@ def face():
     )
 
     print("Found {0} faces!".format(len(faces)))
-    
+
 
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
@@ -33,3 +34,9 @@ def face():
     # Display the resulting frame
     os.chdir(os.path.join(os.path.dirname(__file__), ".\\face\\"))
     cv2.imwrite('2.jpeg', cap)
+    os.chdir(retval)
+
+    if len(faces) > 0:
+        return True
+    else:
+        return False

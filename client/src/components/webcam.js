@@ -12,16 +12,19 @@ const WebcamCapture = () => {
     const[name,setName]=useState('');
     const capture = React.useCallback(
         ()=>{
-            const imageSrc = webcamRef.current.getScreenshot();
-            console.log(`imageSrc = ${imageSrc}`)
-            axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
-            .then(res=>{
-                console.log(`response = ${res}`)
-                setName(res.data)
-            }) 
-            .catch(error=>{
-                console.log(`error = ${error}`)
-            })
+            setInterval(function(){
+                const imageSrc = webcamRef.current.getScreenshot();
+                console.log(`imageSrc = ${imageSrc}`)
+                axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
+                .then(res=>{
+                    console.log(`response = ${res}`)
+                    setName(res.data)
+                }) 
+                .catch(error=>{
+                    console.log(`error = ${error}`)
+                })
+                
+            }, 100)
     },
         [webcamRef]
     );
