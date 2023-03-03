@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Webcam from 'react-webcam';
 import WebcamCapture from './components/webcam.js'
+import Note from './components/note.js'
 
 class App extends Component{
 
@@ -11,6 +12,7 @@ class App extends Component{
           <h2>Live Face Recognition</h2>
         </div>
         <WebcamCapture/>
+        <Note/>
       </div>
     )
   }
