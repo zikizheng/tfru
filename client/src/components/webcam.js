@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Webcam from 'react-webcam';
 import "../App.css";
+var temp = '0,0,0,0'
 
-const WebcamCapture = () => {
+function WebcamCapture() {
     const webcamRef=React.useRef(null);
     const videoConstraints = {
         width:200,
@@ -11,24 +12,22 @@ const WebcamCapture = () => {
         facingMode:'user'
     };
     const[name,setName]=useState('');
-    const capture = React.useCallback(
-        ()=>{
-            setInterval(function(){
-                const imageSrc = webcamRef.current.getScreenshot();
-                console.log(`imageSrc = ${imageSrc}`)
-                axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
-                .then(res=>{
-                    console.log(`response = ${res}`)
-                    setName(res.data)
-                }) 
-                .catch(error=>{
-                    console.log(`error = ${error}`)
+    
+    useEffect(() => {
+        setInterval(()=>{
+            try{
+            const imageSrc = webcamRef.current.getScreenshot();
+            axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
+            .then(res=>{
+                try{
+                    temp = res.data
+                }catch(e){}
                 })
-                
-            }, 100)
-    },
-        [webcamRef]
-    );
+                .catch(error=>{
+                })
+            }catch(a){}}, 1000)
+    },[]);
+    
         return(
             <div>
                 <Webcam className="webcam"
@@ -37,12 +36,11 @@ const WebcamCapture = () => {
                 ref = {webcamRef}
                 screenshotFormat = 'image/jpeg'
                 width = {350}
-                videoConstraints = {videoConstraints}
-            />
-            <button onClick = {capture}>Click me</button>
-                <h2>{name}</h2>
+                videoConstraints = {videoConstraints}/>
             </div>
-        )
-};
 
+        )
+    };
+    
+export var coord = temp
  export default WebcamCapture
