@@ -9,11 +9,17 @@ function Box() {
   const drawRectangle = (e) => {
     var coords = e.split(",");
     const context = canvasRef.current.getContext("2d");
-    context.strokeStyle = "black";
+    context.strokeStyle = "green";
     context.lineWidth = 2;
     context.clearRect(0, 0, 500, 500)
     context.strokeRect(parseInt(coords[0])/4, parseInt(coords[1])/10, parseInt(coords[2])/5, parseInt(coords[3])/5);
-    console.log(parseInt(coords[0])+ parseInt(coords[1])+ parseInt(coords[2]), parseInt(coords[3]));
+    context.fillStyle = "white";
+    context.fillRect(parseInt(coords[0])/4 + (parseInt(coords[2])/5)+10, parseInt(coords[1])/10, parseInt(coords[2])/5, parseInt(coords[3])/5);
+    if (parseInt(coords[1]) != 0){
+      context.fillStyle = "red";
+      context.fillText('Ziki Zheng', parseInt(coords[0])/4 + parseInt(coords[2])/4, (parseInt(coords[2])/5))
+    }
+    
   };
 
   useEffect(() => {setInterval(()=>{
@@ -30,6 +36,7 @@ function Box() {
       height: 960,
     }}
   />
+  <div className="txtbox"/>
 </div>
   );
 }

@@ -23,7 +23,7 @@ function WebcamCapture() {
                 })
                 .catch(error=>{
                 })
-            }catch(a){}}, 1000)
+            }catch(a){}}, 500)
     },[]);
     
         return(
