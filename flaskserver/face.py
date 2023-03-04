@@ -4,7 +4,7 @@ import os
 def faceDetect():
 
     retval = os.getcwd()
-    file_name = os.path.join(os.path.dirname(__file__), '.\\face\\1.jpeg')
+    file_name = os.path.join(os.path.dirname(__file__), './face/1.jpeg')
     assert os.path.exists(file_name)
 
     cap = cv2.imread(file_name)
@@ -32,7 +32,7 @@ def faceDetect():
 
 
     # Display the resulting frame
-    os.chdir(os.path.join(os.path.dirname(__file__), ".\\face\\"))
+    os.chdir(os.path.join(os.path.dirname(__file__), "./face/"))
     cv2.imwrite('2.jpeg', cap)
     os.chdir(retval)
 
@@ -40,3 +40,5 @@ def faceDetect():
         return True
     else:
         return False
+    
+faceDetect()

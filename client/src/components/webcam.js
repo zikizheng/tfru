@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Webcam from 'react-webcam';
+import "../App.css";
 
 const WebcamCapture = () => {
     const webcamRef=React.useRef(null);
@@ -30,7 +31,7 @@ const WebcamCapture = () => {
     );
         return(
             <div>
-                <Webcam
+                <Webcam className="webcam"
                 audio = {false}
                 height = {300}
                 ref = {webcamRef}
