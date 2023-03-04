@@ -12,7 +12,7 @@ function Box() {
     context.strokeStyle = "black";
     context.lineWidth = 2;
     context.clearRect(0, 0, 500, 500)
-    context.strokeRect(parseInt(coords[0])/4, parseInt(coords[1])/10, parseInt(coords[2])/10, parseInt(coords[3])/10);
+    context.strokeRect(parseInt(coords[0])/4, parseInt(coords[1])/10, parseInt(coords[2])/5, parseInt(coords[3])/5);
     console.log(parseInt(coords[0])+ parseInt(coords[1])+ parseInt(coords[2]), parseInt(coords[3]));
   };
 

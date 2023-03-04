@@ -12,9 +12,8 @@ class App extends Component{
         <div className='head'>
       </div>
         <div className='face'>
+          <WebcamCapture/>
           <Box/>
-            <WebcamCapture/>
-          
         </div>
         
       </div>
