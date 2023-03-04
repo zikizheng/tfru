@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Webcam from 'react-webcam';
 import "../App.css";
-var temp = '0,0,0,0'
+export let temp = '0,0,0,0'
 
 function WebcamCapture() {
     const webcamRef=React.useRef(null);
     const videoConstraints = {
-        width:200,
-        height:200,
+        width:640,
+        height:480,
         facingMode:'user'
     };
     const[name,setName]=useState('');
@@ -19,9 +19,7 @@ function WebcamCapture() {
             const imageSrc = webcamRef.current.getScreenshot();
             axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
             .then(res=>{
-                try{
                     temp = res.data
-                }catch(e){}
                 })
                 .catch(error=>{
                 })
@@ -32,15 +30,13 @@ function WebcamCapture() {
             <div>
                 <Webcam className="webcam"
                 audio = {false}
-                height = {300}
+                height = {960}
                 ref = {webcamRef}
                 screenshotFormat = 'image/jpeg'
-                width = {350}
+                width = {1280}
                 videoConstraints = {videoConstraints}/>
             </div>
 
         )
     };
-    
-export var coord = temp
- export default WebcamCapture
+export default WebcamCapture

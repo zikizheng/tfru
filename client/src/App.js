@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import Webcam from 'react-webcam';
+import Box from './components/box.js';
 import WebcamCapture from './components/webcam.js'
-import Box from './components/box.js'
-
+import "./App.css";
 
 class App extends Component{
 
@@ -9,14 +10,13 @@ class App extends Component{
     return(
       <div>
         <div className='head'>
-          <h2>Live Face Recognition</h2>
-        </div>
-        <div className='body'>
-          <WebcamCapture/>
+      </div>
+        <div className='face'>
           <Box/>
+            <WebcamCapture/>
+          
         </div>
         
-
       </div>
     )
   }
