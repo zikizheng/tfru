@@ -9,3 +9,8 @@
 .webcam{
   position:absolute;
 }
+
+button{
+  position:absolute;
+  top: 350px;
+}

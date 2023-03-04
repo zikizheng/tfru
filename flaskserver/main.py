@@ -22,11 +22,7 @@ def api():
     image=b[b.find(b'/9'):]
     im = Image.open(io.BytesIO(base64.b64decode(image)))
     im.save(file_name)
-    if faceDetect():
-        ret = "Face Detected"
-    else:
-        ret = "Face Not Detected"
-        
+    ret = faceDetect()
     return ret
 if __name__=='__main__':
     app.run()

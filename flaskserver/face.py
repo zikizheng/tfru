@@ -37,8 +37,8 @@ def faceDetect():
     os.chdir(retval)
 
     if len(faces) > 0:
-        return True
+        return F"{faces[0][0]} {faces[0][1]} {faces[0][2]} {faces[0][3]}"
     else:
-        return False
+        return F"0 0 0 0"
     
 faceDetect()

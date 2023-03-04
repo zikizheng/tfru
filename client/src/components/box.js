@@ -1,14 +1,23 @@
 import { useEffect, useRef } from "react";
+import Webcam from "react-webcam";
 import "../App.css";
+import dataArray from "./webcam.js";
+const coord = '0 0 0 0'
 
 function Box() {
   const canvasRef = useRef();
 
   const drawRectangle = () => {
+    if ((coord.length) > 0){
+    const b = coord.split(' ').map(Number);
+  
     const context = canvasRef.current.getContext("2d");
     context.strokeStyle = "black";
     context.lineWidth = 2;
-    context.strokeRect(50, 30, 110, 90);
+    if (b[2] > 0) { 
+    context.strokeRect(b[0], b[1], b[2], b[3]);
+    }
+    }
   };
 
   useEffect(() => {

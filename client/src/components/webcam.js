@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import axios from 'axios';
 import Webcam from 'react-webcam';
 import "../App.css";
@@ -19,7 +19,9 @@ const WebcamCapture = () => {
                 axios.post('http://127.0.0.1:5000/api',{data:imageSrc})
                 .then(res=>{
                     console.log(`response = ${res}`)
-                    setName(res.data)
+
+                    //setName(res.data)
+                    const coord = res.data;
                 }) 
                 .catch(error=>{
                     console.log(`error = ${error}`)
